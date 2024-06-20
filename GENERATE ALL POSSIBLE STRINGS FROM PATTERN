@@ -1,0 +1,22 @@
+#include <bits/stdc++.h> 
+vector<string> answer;
+    void generate(string s, int position)
+    {
+      if (position == s.size()) {
+        answer.push_back(s);
+      } else if (s[position] == '?') {
+        s[position] = '0';
+        generate(s, position + 1);
+        s[position] = '1';
+        generate(s, position + 1);
+      }else if(s[position]=='0'||s[position]=='1'){
+      generate(s, position+1);
+    }
+}
+
+vector<string> binaryStrings(string &str)
+{
+    answer.clear();
+    generate(str, 0);
+    return answer;
+}
